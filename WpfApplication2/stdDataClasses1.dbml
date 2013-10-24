@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="stuDB" Class="stdDataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=localhost;Initial Catalog=stuDB;Integrated Security=True" SettingsObjectName="WpfApplication2.Properties.Settings" SettingsPropertyName="stuDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Department" Member="Departments">
+    <Type Name="Department">
+      <Column Name="deptId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="deptName" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Association Name="Department_Student" Member="Students" ThisKey="deptId" OtherKey="deptID" Type="Student" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Student" Member="Students">
+    <Type Name="Student">
+      <Column Name="stuId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="stuName" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="age" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="image" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="deptID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Department_Student" Member="Department" ThisKey="deptID" OtherKey="deptId" Type="Department" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
